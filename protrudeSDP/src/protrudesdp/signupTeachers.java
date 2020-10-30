@@ -40,9 +40,11 @@ public class signupTeachers extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(960, 580));
         getContentPane().setLayout(null);
         getContentPane().add(name);
         name.setBounds(250, 130, 160, 30);
@@ -85,14 +87,28 @@ public class signupTeachers extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(90, 340, 260, 17);
 
-        jButton2.setText("Proceed");
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton2.setText("Sign Up");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(220, 410, 130, 23);
+        jButton2.setBounds(220, 410, 130, 25);
+
+        jButton1.setBackground(new java.awt.Color(23, 50, 109));
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("GO BACK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(10, 10, 130, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/signupTeachers.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -105,36 +121,43 @@ public class signupTeachers extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
+
         String a = name.getText();
         String b = email.getText();
         String c = contact.getText();
         String d = password.getText();
-        String f;
-        f = password.getText();
-        
-        if(d.equals(f)){
-        try{
-            Class.forName("java.sql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/user_details","root","nirvisha26");
-            Statement stmt = con.createStatement();
-            int s = stmt.executeUpdate("insert into teachers (name,email,contact,password) values ('"+a+"','"+b+"','"+c+"','"+d+"');");
-            JOptionPane.showMessageDialog(null, "Congratulations, You are Registered.");
-           
+        String f = confirmpassword.getText();
+
+        if (d.equals(f)){
+            try{
+                Class.forName("java.sql.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/user_details","root","nirvisha26");
+                Statement stmt = con.createStatement();
+                int s = stmt.executeUpdate("insert into teachers (name,email,contact,password) values ('"+a+"','"+b+"','"+c+"','"+d+"');");
+                JOptionPane.showMessageDialog(null, "Congratulations, You are Registered.");
+
             }
-        catch(SQLException se){
-            //Handle errors for JDBC
-            se.printStackTrace();
+            catch(SQLException se){
+                //Handle errors for JDBC
+                se.printStackTrace();
             }
-        catch(Exception e){
-            //Handle errors for Class.forName
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null,"ERROR! Registration Failed");
+            catch(Exception e){
+                //Handle errors for Class.forName
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null,"ERROR! Registration Failed");
             }
         }else{
-                JOptionPane.showMessageDialog(null,"Entered passwords dosent match.");
-            }
+            JOptionPane.showMessageDialog(null,"Entered passwords dosent match.");
+        }
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        main info=new main();
+        info.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,6 +198,7 @@ public class signupTeachers extends javax.swing.JFrame {
     private javax.swing.JPasswordField confirmpassword;
     private javax.swing.JTextField contact;
     private javax.swing.JTextField email;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

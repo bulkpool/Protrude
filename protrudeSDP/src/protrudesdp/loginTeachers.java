@@ -5,6 +5,13 @@
  */
 package protrudesdp;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nirvisha soni
@@ -27,28 +34,28 @@ public class loginTeachers extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        name = new javax.swing.JTextField();
+        n = new javax.swing.JTextField();
         password = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        loginMsgFeild = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(960, 580));
         getContentPane().setLayout(null);
-        getContentPane().add(name);
-        name.setBounds(250, 200, 160, 30);
-        getContentPane().add(password);
-        password.setBounds(250, 260, 160, 30);
 
-        jButton1.setText("Proceed");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        n.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                nActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(240, 340, 71, 23);
+        getContentPane().add(n);
+        n.setBounds(250, 200, 160, 30);
+        getContentPane().add(password);
+        password.setBounds(250, 260, 160, 30);
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -62,6 +69,42 @@ public class loginTeachers extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(130, 260, 110, 30);
 
+        loginMsgFeild.setBackground(new java.awt.Color(20, 53, 109));
+        loginMsgFeild.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        loginMsgFeild.setForeground(new java.awt.Color(255, 0, 0));
+        loginMsgFeild.setToolTipText("");
+        loginMsgFeild.setBorder(null);
+        loginMsgFeild.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginMsgFeildActionPerformed(evt);
+            }
+        });
+        getContentPane().add(loginMsgFeild);
+        loginMsgFeild.setBounds(190, 300, 180, 30);
+
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton2.setText("Log In");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(220, 350, 130, 25);
+
+        jButton1.setBackground(new java.awt.Color(23, 50, 109));
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("GO BACK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(10, 10, 130, 30);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/loginTeachers.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 960, 540);
@@ -69,9 +112,57 @@ public class loginTeachers extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void loginMsgFeildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginMsgFeildActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginMsgFeildActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+
+        String a = n.getText();
+        String d = password.getText();
+        String loginMsg = "Entered password is wrong. Try again!";
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/user_details","root","nirvisha26");
+            Statement st=con.createStatement();
+            ResultSet rs;
+            rs = st.executeQuery("select * from students");
+            while(rs.next()){
+                String username=rs.getString("name");
+                String password=rs.getString("password");
+
+                if(a.equals(username) && password.equals(d)){
+                    main info=new main();
+                    info.setVisible(true);
+                    this.setVisible(false);
+                    break;
+                }else{
+                    loginMsgFeild.setText(loginMsg);
+                }
+            }
+            con.close();
+        }catch(SQLException se){
+            //Handle errors for JDBC
+            se.printStackTrace();
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"Error while establishing Connection");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        main info=new main();
+        info.setVisible(true);
+        this.setVisible(false);
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void nActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,10 +201,12 @@ public class loginTeachers extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField name;
+    private javax.swing.JTextField loginMsgFeild;
+    private javax.swing.JTextField n;
     private javax.swing.JTextField password;
     // End of variables declaration//GEN-END:variables
 }
