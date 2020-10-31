@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package protrudesdp;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 /**
  *
@@ -32,10 +35,21 @@ public class main extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(960, 580));
         getContentPane().setLayout(null);
 
         jButton1.setBackground(new java.awt.Color(30, 96, 142));
@@ -103,6 +117,69 @@ public class main extends javax.swing.JFrame {
         getContentPane().add(jButton5);
         jButton5.setBounds(0, 230, 190, 40);
 
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 21)); // NOI18N
+        jLabel3.setText("indisputably.");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(350, 190, 110, 30);
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
+        jLabel4.setText("Get started with us");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(330, 300, 190, 30);
+
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 21)); // NOI18N
+        jLabel5.setText("efficient way to reviewing them ");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(270, 160, 270, 30);
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 21)); // NOI18N
+        jLabel6.setText("From managing projects in the most ");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(260, 130, 310, 30);
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
+        jLabel7.setText("We got you all covered!");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(300, 240, 220, 30);
+
+        jButton6.setBackground(new java.awt.Color(30, 96, 142));
+        jButton6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("I am a Student");
+        jButton6.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6);
+        jButton6.setBounds(340, 430, 150, 60);
+
+        jButton7.setBackground(new java.awt.Color(30, 96, 142));
+        jButton7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("I am a Teacher");
+        jButton7.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7);
+        jButton7.setBounds(340, 350, 150, 60);
+
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(30, 96, 142));
+        jLabel10.setText("All rights reserved ");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(50, 520, 100, 14);
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(30, 96, 142));
+        jLabel9.setText("Copyright ©2020 ");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(50, 500, 120, 20);
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/navbar-1.png"))); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(-10, -10, 200, 570);
@@ -112,31 +189,64 @@ public class main extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(180, 0, 780, 540);
 
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(30, 96, 142));
+        jLabel8.setText("Copyright ©2020 ");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(40, 490, 120, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        main info=new main();
+        info.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        aboutUs info=new aboutUs();
+        info.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        new welcomeTeachers().setVisible(true);
-
-        this.dispose();//to close the current jframe
+        welcomeTeachers info=new welcomeTeachers();
+        info.setVisible(true);
+        this.setVisible(false);
+      //to close the current jframe
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        contactUs info=new contactUs();
+        info.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        welcomeStudents info=new welcomeStudents();
+        info.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        welcomeTeachers info=new welcomeTeachers();
+        info.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        welcomeStudents info=new welcomeStudents();
+        info.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,7 +289,17 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }

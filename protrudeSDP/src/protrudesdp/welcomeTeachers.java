@@ -32,10 +32,15 @@ public class welcomeTeachers extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(960, 580));
         getContentPane().setLayout(null);
 
         jButton2.setBackground(new java.awt.Color(30, 96, 144));
@@ -103,9 +108,47 @@ public class welcomeTeachers extends javax.swing.JFrame {
         getContentPane().add(jButton4);
         jButton4.setBounds(0, 310, 190, 40);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/navbar_1.png"))); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(30, 96, 142));
+        jLabel3.setText("Copyright ©2020 ");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(40, 490, 120, 20);
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(30, 96, 142));
+        jLabel4.setText("All rights reserved ");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(40, 510, 100, 14);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/navbar-1.png"))); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(-10, -10, 210, 550);
+
+        jButton7.setBackground(new java.awt.Color(30, 96, 142));
+        jButton7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("Log In");
+        jButton7.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7);
+        jButton7.setBounds(340, 350, 150, 60);
+
+        jButton6.setBackground(new java.awt.Color(30, 96, 142));
+        jButton6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Sign Up");
+        jButton6.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6);
+        jButton6.setBounds(340, 430, 150, 60);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Welcome Teacher.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -117,23 +160,53 @@ public class welcomeTeachers extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        main info=new main();
+        info.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        welcomeTeachers info=new welcomeTeachers();
+        info.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        welcomeStudents info=new welcomeStudents();
+        info.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        aboutUs info=new aboutUs();
+        info.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
         // TODO add your handling code here:
+        contactUs info=new contactUs();
+        info.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        loginTeachers info=new loginTeachers();
+        info.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        signupTeachers info=new signupTeachers();
+        info.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,7 +250,11 @@ public class welcomeTeachers extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
