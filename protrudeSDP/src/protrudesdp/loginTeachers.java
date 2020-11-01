@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -23,6 +25,9 @@ public class loginTeachers extends javax.swing.JFrame {
      */
     public loginTeachers() {
         initComponents();
+                Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
     }
 
     /**
@@ -127,13 +132,13 @@ public class loginTeachers extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/user_details","root","nirvisha26");
             Statement st=con.createStatement();
             ResultSet rs;
-            rs = st.executeQuery("select * from students");
+            rs = st.executeQuery("select * from teachers");
             while(rs.next()){
                 String username=rs.getString("name");
                 String password=rs.getString("password");
 
                 if(a.equals(username) && password.equals(d)){
-                    main info=new main();
+                    teacherProfile info=new teacherProfile();
                     info.setVisible(true);
                     this.setVisible(false);
                     break;

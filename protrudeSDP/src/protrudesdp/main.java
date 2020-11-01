@@ -7,6 +7,7 @@ package protrudesdp;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.awt.Dimension;
 
 /**
  *
@@ -19,6 +20,9 @@ public class main extends javax.swing.JFrame {
      */
     public main() {
         initComponents();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
     }
 
     /**
@@ -184,7 +188,7 @@ public class main extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(-10, -10, 200, 570);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/main_1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/main.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(180, 0, 780, 540);

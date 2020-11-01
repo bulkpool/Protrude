@@ -6,6 +6,8 @@
 package protrudesdp;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -18,6 +20,9 @@ public class loginStudents extends javax.swing.JFrame {
      */
     public loginStudents() {
         initComponents();
+                Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
     }
 
     /**
@@ -119,7 +124,7 @@ public class loginStudents extends javax.swing.JFrame {
                   String password=rs.getString("password");
 
                 if(a.equals(username) && password.equals(d)){
-                      main info=new main();
+                      studentProfile info=new studentProfile();
                       info.setVisible(true);
                       this.setVisible(false);
                       break;
