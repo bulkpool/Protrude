@@ -8,12 +8,23 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.Dimension;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import javax.swing.JFileChooser;
+import java.sql.*;
+
+
 
 /**
  *
  * @author nirvisha soni
  */
 public class studentMyProfile extends javax.swing.JFrame {
+    
+    String path;
+    String newpath;
+
 
     /**
      * Creates new form main
@@ -23,6 +34,10 @@ public class studentMyProfile extends javax.swing.JFrame {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
+    }
+
+class path {
+    
     }
 
     /**
@@ -41,6 +56,10 @@ public class studentMyProfile extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        n = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
@@ -116,6 +135,37 @@ public class studentMyProfile extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(-10, -10, 200, 570);
 
+        jLabel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(250, 360, 180, 30);
+
+        jButton4.setText("export");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4);
+        jButton4.setBounds(340, 410, 65, 23);
+
+        jButton6.setText("browse");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6);
+        jButton6.setBounds(450, 360, 67, 23);
+
+        n.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        n.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nActionPerformed(evt);
+            }
+        });
+        getContentPane().add(n);
+        n.setBounds(220, 170, 370, 130);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Student profile.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
@@ -159,6 +209,68 @@ public class studentMyProfile extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+       String a = n.getText();
+        
+        
+        try{
+        File newpdf = new File(newpath);
+        FileInputStream fis = new FileInputStream(newpdf);
+        ByteArrayOutputStream baos= new ByteArrayOutputStream();
+        byte[] buff = new byte[2048000];
+        for(int readNum; (readNum=fis.read(buff)) !=-1 ; ){
+            baos.write(buff,0,readNum);
+        }
+
+        userpdf=baos.toByteArray();
+
+
+    }
+    catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);
+    }
+ PreparedStatement pstmt = null;
+
+        try{
+             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user_details","root","nirvisha26");
+             String proj_name = JOptionPane.showInputDialog("Please enter name of the file");
+             /*
+             String insert = "INSERT INTO project VALUES ('" + login.admission + "','" + login.yr + "','" + proj_name + "','" + userpdf + "')";
+
+             java.sql.PreparedStatement pst = con.prepareStatement(insert);
+             pst.executeUpdate(insert);*/
+
+             String sql = "INSERT INTO pdf"+"VALUES (?,?)";
+
+
+        pstmt = (PreparedStatement) con.prepareStatement(sql);
+        /*pstmt.setString( n);*/
+        pstmt.setBytes(4, userpdf); //This line has an error may be because of userpdf.Plz //suggest
+
+        pstmt.executeUpdate();
+
+
+        JOptionPane.showMessageDialog(null, "Saved");
+    }
+    catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);
+    }//GEN-LAST:event_jButton4ActionPerformed
+    }
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        String filename = f.getAbsolutePath();
+        path = filename;
+        newpath = path.replace('\\', '/');
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void nActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -201,11 +313,18 @@ public class studentMyProfile extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField n;
     // End of variables declaration//GEN-END:variables
+    private byte[] userpdf = null;
+    
+
 }
