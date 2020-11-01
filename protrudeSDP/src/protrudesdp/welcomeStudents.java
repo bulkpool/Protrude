@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package protrudesdp;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 
 /**
  *
@@ -16,6 +19,9 @@ public class welcomeStudents extends javax.swing.JFrame {
      */
     public welcomeStudents() {
         initComponents();
+                Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
     }
 
     /**
@@ -37,6 +43,10 @@ public class welcomeStudents extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -150,6 +160,26 @@ public class welcomeStudents extends javax.swing.JFrame {
         getContentPane().add(jButton6);
         jButton6.setBounds(340, 430, 150, 60);
 
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
+        jLabel11.setText("Register the project that you are making ");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(230, 130, 380, 30);
+
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
+        jLabel12.setText("and manage it efficiently by submitting all ");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(230, 160, 380, 30);
+
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
+        jLabel13.setText("the information related to it at a single place. ");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(230, 190, 400, 30);
+
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
+        jLabel10.setText("Log in or sign up with us to continue!");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(250, 290, 380, 30);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Welcome Students.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
@@ -256,6 +286,10 @@ public class welcomeStudents extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
