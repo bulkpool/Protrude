@@ -265,6 +265,8 @@ class path {
         String filename = f.getAbsolutePath();
         path = filename;
         newpath = path.replace('\\', '/');
+        
+        n.setText(path);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void nActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nActionPerformed
