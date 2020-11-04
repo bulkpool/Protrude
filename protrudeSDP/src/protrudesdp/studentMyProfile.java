@@ -211,9 +211,9 @@ class path {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-       String a = n.getText();
+       // String a = n.getText();
         
-        
+        /*
         try{
         File newpdf = new File(newpath);
         FileInputStream fis = new FileInputStream(newpdf);
@@ -229,26 +229,31 @@ class path {
     }
     catch(Exception e){
         JOptionPane.showMessageDialog(null, e);
-    }
- PreparedStatement pstmt = null;
+    }*/
+            PreparedStatement pstmt = null;
+       
 
         try{
-             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user_details","root","nirvisha26");
-             String proj_name = JOptionPane.showInputDialog("Please enter name of the file");
+             Class.forName("java.sql.Driver");
+            Connection con = DriverManager.getConnection
+            ("jdbc:mysql://localhost/user_details","root","giis");
+            Statement smt = con.createStatement();
+            String query = "insert into test(file_path) values ('"+newpath+"')" ;
+            smt.executeUpdate(query);
+           
              /*
              String insert = "INSERT INTO project VALUES ('" + login.admission + "','" + login.yr + "','" + proj_name + "','" + userpdf + "')";
 
              java.sql.PreparedStatement pst = con.prepareStatement(insert);
-             pst.executeUpdate(insert);*/
+             pst.executeUpdate(insert);
 
              String sql = "INSERT INTO pdf"+"VALUES (?,?)";
 
 
-        pstmt = (PreparedStatement) con.prepareStatement(sql);
-        /*pstmt.setString( n);*/
-        pstmt.setBytes(4, userpdf); //This line has an error may be because of userpdf.Plz //suggest
-
-        pstmt.executeUpdate();
+            pstmt = (PreparedStatement) con.prepareStatement(sql);
+            pstmt.setString( n);
+            pstmt.setBytes(4, userpdf); //This line has an error may be because of userpdf.Plz //suggest
+            pstmt.executeUpdate(); */
 
 
         JOptionPane.showMessageDialog(null, "Saved");
@@ -264,7 +269,9 @@ class path {
         File f = chooser.getSelectedFile();
         String filename = f.getAbsolutePath();
         path = filename;
+        //System.out.println(path);
         newpath = path.replace('\\', '/');
+        //System.out.println(path);
         
         n.setText(path);
     }//GEN-LAST:event_jButton6ActionPerformed

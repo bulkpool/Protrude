@@ -8,6 +8,13 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.Dimension;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import org.icepdf.ri.common.ComponentKeyBinding;
+import org.icepdf.ri.common.SwingController;
+import org.icepdf.ri.common.SwingViewBuilder;
 
 /**
  *
@@ -38,6 +45,8 @@ public class teacherProfile extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        tf1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -77,7 +86,7 @@ public class teacherProfile extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(30, 96, 142));
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("REVIEW PROJECTS\n");
+        jButton3.setText("REVIEW PROJECTS ");
         jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +108,19 @@ public class teacherProfile extends javax.swing.JFrame {
         });
         getContentPane().add(jButton5);
         jButton5.setBounds(0, 320, 190, 40);
+
+        jButton4.setText("Display ");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4);
+        jButton4.setBounds(350, 390, 79, 25);
+
+        tf1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(tf1);
+        tf1.setBounds(280, 280, 220, 70);
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(30, 96, 142));
@@ -159,6 +181,30 @@ public class teacherProfile extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+        try{
+        Class.forName("java.sql.Driver");
+        Connection con = DriverManager.getConnection
+        ("jdbc:mysql://localhost/user_details","root","giis");
+        Statement smt = con.createStatement();
+        String query = "select file_path from test where id = 4 ;" ;
+        ResultSet rs = smt.executeQuery(query);
+        
+        String file= "NULL" ;
+        
+        if(rs.next())
+            file = rs.getString("file_path");
+        
+        String newfile = file.replace('/','\\');
+        tf1.setText(newfile);
+        openpdf(newfile);
+        }
+        catch(Exception e){
+           JOptionPane.showMessageDialog(null,e); 
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -196,16 +242,42 @@ public class teacherProfile extends javax.swing.JFrame {
             }
         });
     }
+    
+    void openpdf(String file){
+  
+    try {
+           SwingController control=new SwingController();
+            SwingViewBuilder factry=new SwingViewBuilder(control);
+            JPanel veiwerCompntpnl=factry.buildViewerPanel();
+            ComponentKeyBinding.install(control, veiwerCompntpnl);
+            control.getDocumentViewController().setAnnotationCallback(
+                    new org.icepdf.ri.common.MyAnnotationCallback(
+                    control.getDocumentViewController()));
+            
+            JFrame window = new JFrame("Using the Viewer Component");
+            window.getContentPane().add(veiwerCompntpnl);
+            window.pack();
+            window.setVisible(true);
+
+                   control.openDocument(file);
+                   
+        
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"Cannot Load Pdf");
+        }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel tf1;
     // End of variables declaration//GEN-END:variables
 }
